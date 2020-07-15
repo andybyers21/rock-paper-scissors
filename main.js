@@ -1,47 +1,53 @@
-const userChoice = document.querySelectorAll("[data-selection]");
-
-let computerChoice;
-var result = resultFunc();
-const displayResult = document.getElementById("result");
-const computerResult = document.getElementById("computer-choice");
-const random = Math.round(Math.random() * 3);
-const userResult = document.getElementById("user-choice");
-const possibleChoices = document.querySelectorAll(".choices");
-
-//Get user choices
-userChoice.forEach((userChoice) => {
-  userChoice.addEventListener("click", (e) => {
-    const choiceName = userChoice.dataset.selection;
-    makeSelection(choiceName);
-  });
-});
-
-//Random computer choices
-function generateComputerChoice() {
-  if (random === 1) {
-    return (computerChoice = "rock");
-  } else if (random === 2) {
-    return (computerChoice = "paper");
-  } else if (random === 3) {
-    return (computerChoice = "scissors");
+const selectionButtons = document.querySelectorAll('[data-selection]')
+const finalColumn = document.querySelector('[data-final-column]')
+const SELECTIONS = [
+  {
+    name: 'rock',
+    emoji: '🤘',
+    beats: 'scissors'
+  },
+  {
+    name: 'paper',
+    emoji: '🗒',
+    beats: 'rock'
+  },
+  {
+    name: 'scissors',
+    emoji: '✂️',
+    beats: 'paper'
   }
+]
+
+selectionButtons.forEach(selectionButton => {
+  selectionButton.addEventListener('click', e => {
+    const selectionName = selectionButton.dataset.selection
+    const selection = SELECTIONS.find(selection => selection.name === selectionName)
+    makeSelection(selection)
+  })
+})
+
+function makeSelection(selection) {
+  const computerSelection = randomSelection()
+  const yourWinner = isWinner(selection, computerSelection)
+  const computerWinner = isWinner(computerSelection, selection)
+  
+  addSelectionResult(computerSelection, computerWinner)
+  addSelectionResult(selection, yourWinner)
 }
 
-//Results
-function resultFunc() {
-  if (computerChoice === userChoice) {
-    return (result = "It's a draw");
-  } else if (computerChoice === "rock" && userChoice === "paper") {
-    return (result = "You lose suckaaaaaa!");
-  } else if (computerChoice === "rock" && userChoice === "scissors") {
-    return (result = "You WIN!");
-  } else if (computerChoice === "paper" && userChoice === "rock") {
-    return (result = "You lose suckaaaaaa!");
-  } else if (computerChoice === "paper" && userChoice === "scissors") {
-    return (result = "You WIN!");
-  } else if (computerChoice === "scissors" && userChoice === "paper") {
-    return (result = "You lose suckaaaaaa!");
-  } else if (computerChoice === "scissors" && userChoice === "rock") {
-    return (result = "You WIN!");
-  }
+function addSelectionResult(selection, winner) {
+  const div = document.createElement('div')
+  div.innerText = selection.emoji
+  div.classList.add('results-selection')
+  if (winner) div.classList.add('winner')
+  finalColumn.after(div)
+}
+
+function isWinner(selection, opponentSelection) {
+  return selection.beats === opponentSelection.name
+}
+
+function randomSelection() {
+  const randomIndex = Math.floor(Math.random() * SELECTIONS.length)
+  return SELECTIONS[randomIndex]
 }

@@ -6,18 +6,26 @@
     <link rel="stylesheet" href="master.css" />
     <script type="text/javascript" src="main.js" defer></script>
   </head>
+
   <body>
     <h1>Choose your weapon</h1>
-    <h1 id="user-choice"></h1>
-
-    <button class="choices" data-selection="rock">rock</button>
-    <button class="choices" data-selection="paper">paper</button>
-    <button class="choices" data-selection="scissors">scissors</button>
-
-    <h2>Computer Choice</h2>
-    <h2 id="computer-choice"></h2>
-
+    <div class="selections">
+      <button class="selection" data-selection="rock">🤘</button>
+      <button class="selection" data-selection="paper">🗒</button>
+      <button class="selection" data-selection="scissors">✂️</button>
+    </div>
     <h3>RESULTS:</h3>
-    <h3 id="result"></h3>
+    <div class="results">
+      <div>
+        You:
+        <span class="results-score">0</span>
+      </div>
+      <div data-final-colum>
+        Computer:
+        <span class="results-score">0</span>
+      </div>
+      <!--<div class="results-selection winner">🤘</div>
+      <div class="results-selection">✂️</div>-->
+    </div>
   </body>
 </html>

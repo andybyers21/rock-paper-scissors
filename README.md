@@ -1,1 +1,1 @@
-A pure JavaScript, html and css game of the classic Rock Paper Scissors
+A pure JavaScript + HTML and CSS game of the classic Rock Paper Scissors
