@@ -1,9 +1,16 @@
 .choices {
-  font-size: 100px;
+  font-size: 80px;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   font-family: monospace;
   font: courier;
   font-size: 50px;
+  color: #2e2d33;
+}
+
+body {
 }
