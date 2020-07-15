@@ -3,11 +3,10 @@ body {
 }
 
 h1 {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   font-family: monospace;
   font: courier;
-  font-size: 50px;
+  font-size: 40px;
   color: #2e2d33;
 }
 
@@ -16,7 +15,7 @@ h3 {
   justify-content: center;
   font-family: monospace;
   font: courier;
-  font-size: 50px;
+  font-size: 20pt;
   color: #2e2d33;
   margin-bottom: .5rem;
 }
@@ -47,12 +46,12 @@ h3 {
   align-items: center;
   font-family: monospace;
   font: courier;
-  font-size: 50px;
+  font-size: 19pt;
   color: #2e2d33;
 }
 
 .results-score {
-  font-size: 30pt;
+  font-size: 10pt;
   color: brown;
 }
 
